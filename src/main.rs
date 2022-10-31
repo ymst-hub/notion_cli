@@ -14,8 +14,8 @@ async fn main() -> std::io::Result<()> {
     };
     //コマンドを取得し、matchで判定する
     loop {
-        let secret_key = keys_buf.get(0).unwrap().to_string();
-        let database_name = keys_buf.get(1).unwrap().to_string();
+        let secret_key = keys_buf.get(0).unwrap().parse().unwrap();
+        let database_name = keys_buf.get(1).unwrap().parse().unwrap();
         let command_print = "コマンドを入力してください\n1 : ボードを全件取得\n2 : タスクのフラグを変更する\n3 : キーの再設定\nその他 : 終了する";
         let command: i64 = match file_local::input_std(command_print).parse() {
             Ok(val) => val,
